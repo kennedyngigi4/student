@@ -25,6 +25,8 @@ const CourseNamePage =  ({
       await axios.get(`http://127.0.0.1:8000/api/courses/course/${resolvedParams?.courseId}`)
       .then((response) => {
         setCourse(response.data);
+      }).catch(() => {
+        toast.error("Something went wrong")
       })
     }
 
@@ -60,7 +62,9 @@ const CourseNamePage =  ({
     axios.get(`${process.env.NEXT_PUBLIC_APIURL}/courses/`)
       .then((response) => {
         setCourses(response.data);
-      });
+      }).catch(() => {
+        toast.error("Something went wrong")
+      })
 
   }, []);
 
