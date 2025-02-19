@@ -143,7 +143,7 @@ const HomePage = () => {
 
             {courses.slice(0, 4).map((course) => (
               <div key={course?.course_id}>
-                <Link href={`/courses/${course?.course_id}/${course?.title}`} >
+                <Link href={`/courses/${course?.course_id}`} >
                   <Card className="bg-transparent hover:cursor-pointer shadow-none border-4 border-dotted border-isky_blue hover:border-isky_orange">
                     <CardContent>
                       <Image src={course?.imagePath} width={300} height={300} alt={course?.title} className="pt-5 rounded-xl" />
@@ -197,7 +197,7 @@ const HomePage = () => {
 
             {courses.map((course) => (
               <div key={course?.course_id}>
-                <Link href={`/courses/${course?.course_id}/${course?.title}`} >
+                <Link href={`/courses/${course?.course_id}`} >
                   <Card className="bg-transparent hover:cursor-pointer shadow-none border-4 border-dotted border-isky_blue hover:border-isky_orange">
                     <CardContent>
                       <Image src={course?.imagePath} width={500} height={500} alt={course?.title} className="pt-5 rounded-xl" />

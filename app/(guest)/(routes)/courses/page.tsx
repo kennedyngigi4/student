@@ -47,7 +47,7 @@ const CoursesPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-x-5 gap-y-6">
               {courses.map((course) => (
                 <div key={course?.course_id}>
-                  <Link href={`/courses/${course?.course_id}/${course?.title}`} >
+                  <Link href={`/courses/${course?.course_id}`} >
                     <Card className="relative bg-transparent hover:cursor-pointer shadow hover:shadow-lg">
                       {course?.price > 30
                         ? (<>
