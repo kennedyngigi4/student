@@ -2,13 +2,16 @@
 
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, use,  useState } from 'react';
 import toast from 'react-hot-toast';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 
-const ChapterIdPage = ({ params } : { params: { courseId: string, purchaseId: string, chapterId: string } }) => {
-    const resolvedParams = React.use(params);
+
+type Params = Promise<{ courseId: string, purchaseId: string, chapterId: string }>;
+
+const ChapterIdPage = (props: { params: Params }) => {
+    const resolvedParams = use(props.params);
     const router = useRouter()
     const [ courseData, setCourseData ] = useState();
     const [ chapterData, setChapterData ] = useState({});
