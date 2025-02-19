@@ -13,19 +13,23 @@ import { useRouter } from 'next/navigation';
 
 const CourseNamePage =  ({ 
     params
-} : { params: Promise<{ courseId: string, courseName: string }>}) => {
+} : { params: { courseId: string, courseName: string }}) => {
   const [ course, setCourse ] = useState({});
   const [courses, setCourses] = useState([]);
-  const resolvedParmas = React.use(params);
+  const resolvedParams = React.use(params);
   const { status } = useSession();
   const router = useRouter();
 
   useEffect(() => {
-    axios.get(`http://127.0.0.1:8000/api/courses/course/${resolvedParmas.courseId}`)
+    const getCourse = async() => {
+      await axios.get(`http://127.0.0.1:8000/api/courses/course/${resolvedParams?.courseId}`)
       .then((response) => {
         setCourse(response.data);
       })
-  }, [resolvedParmas?.courseId]);
+    }
+
+    getCourse();
+  }, [resolvedParams?.courseId]);
 
 
   const techs = [
