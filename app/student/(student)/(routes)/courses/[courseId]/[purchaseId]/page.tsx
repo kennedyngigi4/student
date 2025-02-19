@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, use } from 'react'
 import toast from 'react-hot-toast';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -10,10 +10,11 @@ import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import { Files } from 'lucide-react';
 
-const PurchaseIdPage = ({
-    params
-} : { params: { courseId: string, purchaseId: string } }) => {
-    const resolvedParams = React.use(params);
+
+type Params = Promise<{ courseId: string, purchaseId: string  }>;
+
+const PurchaseIdPage = (props: { params: Params }) => {
+    const resolvedParams = use(props.params);
     const { data:session } = useSession();
     const [ purchaseDetails, setPurchaseDetails] = useState({});
     const [ courseDetails, setCourseDetails ] = useState({});

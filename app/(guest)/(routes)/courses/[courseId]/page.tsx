@@ -13,7 +13,7 @@ import ChaptersList from '@/app/(guest)/_components/chapters-list';
 import { Button } from '@/components/ui/button';
 
 
-type Params = Promise<{ courseId: string  }>
+type Params = Promise<{ courseId: string  }>;
 
 const CourseIdPage = (props: { params: Params }) => {
     const resolvedParams = use(props.params);

@@ -1,10 +1,10 @@
 "use client"
-import React from 'react'
+import React, { use } from 'react'
 
-const CourseIdPage = ({
-    params
-} : { params: { courseId: string } }) => {
-    const resolvedParams = React.use(params);
+type Params = Promise<{ courseId: string }>;
+
+const CourseIdPage = (props: { params: Params }) => {
+    const resolvedParams = use(props.params);
 
   return (
       <section className="min-h-screen p-6">CourseIdPage: {resolvedParams?.courseId}</section>
