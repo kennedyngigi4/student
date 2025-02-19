@@ -13,7 +13,7 @@ import { useRouter } from 'next/navigation';
 
 const CourseNamePage =  ({ 
     params
-} : { params: { courseId: string, courseName: string } }) => {
+} : { params: Promise<{ courseId: string, courseName: string }>}) => {
   const [ course, setCourse ] = useState({});
   const [courses, setCourses] = useState([]);
   const resolvedParmas = React.use(params);
@@ -55,7 +55,6 @@ const CourseNamePage =  ({
   useEffect(() => {
     axios.get(`${process.env.NEXT_PUBLIC_APIURL}/courses/`)
       .then((response) => {
-        console.log(response.data)
         setCourses(response.data);
       });
 
