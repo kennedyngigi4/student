@@ -13,7 +13,7 @@ import { useRouter } from 'next/navigation';
 
 const CourseNamePage =  ({ 
     params
-} : { params: { courseId: string, courseName: string }}) => {
+} : { params: { courseId: string }}) => {
   const [ course, setCourse ] = useState({});
   const [courses, setCourses] = useState([]);
   const resolvedParams = React.use(params);
@@ -22,7 +22,7 @@ const CourseNamePage =  ({
 
   useEffect(() => {
     const getCourse = async() => {
-      await axios.get(`http://127.0.0.1:8000/api/courses/course/${resolvedParams?.courseId}`)
+      await axios.get(`${process.env.NEXT_PUBLIC_APIURL}/courses/course/${resolvedParams?.courseId}`)
       .then((response) => {
         setCourse(response.data);
       }).catch(() => {
