@@ -1,10 +1,9 @@
 "use client"
 import ChaptersList from '@/app/(guest)/_components/chapters-list';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import axios from 'axios';
-import { ArrowRight, Clock, File, GraduationCap, Laptop2, Mail, Phone, Star, Video } from 'lucide-react';
+import { Clock, File, GraduationCap, Laptop2, Mail, Phone, Star, Video } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image';
 import Link from 'next/link'
@@ -18,7 +17,7 @@ const CourseNamePage =  ({
   const [ course, setCourse ] = useState({});
   const [courses, setCourses] = useState([]);
   const resolvedParmas = React.use(params);
-  const { data:session, status } = useSession();
+  const { status } = useSession();
   const router = useRouter();
 
   useEffect(() => {
@@ -26,7 +25,7 @@ const CourseNamePage =  ({
       .then((response) => {
         setCourse(response.data);
       })
-  }, []);
+  }, [resolvedParmas?.courseId]);
 
 
   const techs = [
@@ -61,8 +60,6 @@ const CourseNamePage =  ({
       });
 
   }, []);
-
-  const skills = course?.skills?.split(",");
 
 
   const handlePurchase = () => {
@@ -115,7 +112,7 @@ const CourseNamePage =  ({
         {/* COLUMN 1 */}
         <div className="col-span-8">
           <div className="border-2 p-6">
-            <h1 className="pb-3 font-semibold text-xl text-isky_orange">Tech skills you'll learn</h1>
+            <h1 className="pb-3 font-semibold text-xl text-isky_orange">Tech skills you will learn</h1>
 
             <div className="grid grid-cols-3 md:grid-cols-5 gap-1">
               {techs.map((tech) => (
@@ -176,7 +173,7 @@ const CourseNamePage =  ({
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p>Feel free to reach out! We're here to help you get the most out of your learning experience.</p>
+              <p>Feel free to reach out! We are here to help you get the most out of your learning experience.</p>
 
               <div className="pt-4">
                 <div className="flex"><Phone className="h-5 w-5 mr-3" /> +971506044114</div>

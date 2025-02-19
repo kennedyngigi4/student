@@ -1,27 +1,19 @@
 "use client"
 
 import { Button } from '@/components/ui/button'
-import { ArrowRight, BrainCircuit, Globe, Lightbulb, MoveRight, Share2, SmilePlus, Sparkles, Star } from 'lucide-react'
+import { BrainCircuit, Globe, Lightbulb, MoveRight, Share2, SmilePlus, Sparkles, Star } from 'lucide-react'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
-import { Carousel, CarouselItem, CarouselContent, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
 import Autoplay from "embla-carousel-autoplay";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import Link from 'next/link'
 import axios from 'axios'
 import Testimonials from '../_components/testimonials'
-import Partners from '../_components/partners'
 import Sliders from '../_components/sliders'
 
 const HomePage = () => {
-
   const [ courses, setCourses ] = useState([]);
-
-  const plugin = React.useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: true })
-  );
-
   useEffect(() => {
     axios.get(`${process.env.NEXT_PUBLIC_APIURL}/courses/`)
         .then(( response) => {
@@ -149,14 +141,14 @@ const HomePage = () => {
 
           <div className="grid md:grid-cols-4 grid-cols-1 gap-4">
 
-            {courses.slice(0, 4).map((course: any) => (
-              <div key={course.course_id}>
-                <Link href={`/courses/${course.course_id}/${course?.title}`} >
+            {courses.slice(0, 4).map((course) => (
+              <div key={course?.course_id}>
+                <Link href={`/courses/${course?.course_id}/${course?.title}`} >
                   <Card className="bg-transparent hover:cursor-pointer shadow-none border-4 border-dotted border-isky_blue hover:border-isky_orange">
                     <CardContent>
-                      <Image src={course.imagePath} width={300} height={300} alt={course.title} className="pt-5 rounded-xl" />
-                      <h1 className="text-md font-semibold line-clamp-2 pt-2">{course.title}</h1>
-                      <p className="pt-4 line-clamp-2 text-sm text-slate-500 mb-4">{course.description}</p>
+                      <Image src={course?.imagePath} width={300} height={300} alt={course?.title} className="pt-5 rounded-xl" />
+                      <h1 className="text-md font-semibold line-clamp-2 pt-2">{course?.title}</h1>
+                      <p className="pt-4 line-clamp-2 text-sm text-slate-500 mb-4">{course?.description}</p>
 
                       <div className="flex gap-x-1 py-3">
                         <p className="text-sm font-semibold">4.5</p>
@@ -203,14 +195,14 @@ const HomePage = () => {
 
           <div className="grid md:grid-cols-4 grid-cols-1 gap-6">
 
-            {courses.map((course: any) => (
-              <div key={course.course_id}>
-                <Link href={`/courses/${course.course_id}/${course?.title}`} >
+            {courses.map((course) => (
+              <div key={course?.course_id}>
+                <Link href={`/courses/${course?.course_id}/${course?.title}`} >
                   <Card className="bg-transparent hover:cursor-pointer shadow-none border-4 border-dotted border-isky_blue hover:border-isky_orange">
                     <CardContent>
-                      <Image src={course.imagePath} width={500} height={500} alt={course.title} className="pt-5 rounded-xl" />
-                      <h1 className="text-md font-semibold line-clamp-2 pt-2">{course.title}</h1>
-                      <p className="pt-4 line-clamp-2 text-sm text-slate-500 mb-4">{course.description}</p>
+                      <Image src={course?.imagePath} width={500} height={500} alt={course?.title} className="pt-5 rounded-xl" />
+                      <h1 className="text-md font-semibold line-clamp-2 pt-2">{course?.title}</h1>
+                      <p className="pt-4 line-clamp-2 text-sm text-slate-500 mb-4">{course?.description}</p>
 
                       <div className="flex gap-x-1 py-3">
                         <p className="text-sm font-semibold">4.5</p>
@@ -327,10 +319,10 @@ const HomePage = () => {
 
 
                 <AccordionItem key="beginner" className="bg-white px-4 rounded-2xl shadow-md" value="beginner">
-                  <AccordionTrigger className="text-isky_blue font-semibold">What's the best course for a beginner?</AccordionTrigger>
+                  <AccordionTrigger className="text-isky_blue font-semibold">What is the best course for a beginner?</AccordionTrigger>
                   <AccordionContent>
-                    For younger kids (ages 6-8), we recommend "Intro to Coding with Scratch Jr.".
-                    For older beginners, "Game Development with Scratch" or "Beginner Python Programming" is a great place to start!
+                    For younger kids (ages 6-8), we recommend Intro to Coding with Scratch Jr..
+                    For older beginners, Game Development with Scratch or Beginner Python Programming is a great place to start!
                   </AccordionContent>
                 </AccordionItem>
 

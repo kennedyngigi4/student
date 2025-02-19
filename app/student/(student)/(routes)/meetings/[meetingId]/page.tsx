@@ -11,7 +11,7 @@ import Loader from '@/components/Loader';
 
 const MeetingPage = ({ params }: { params: { meetingId: string }}) => {
     const resolvedParams = React.use(params); 
-    const { data:session, status } = useSession();
+    const { status } = useSession();
     const [isSetupComplete, setIsSetupComplete ] = useState(false);
     const { call, isCallLoading } = useGetCallById(resolvedParams?.meetingId);
 

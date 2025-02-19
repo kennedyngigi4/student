@@ -1,4 +1,4 @@
-import { ArrowRight, Facebook, Instagram, Linkedin, MoveRight, Twitter, Youtube } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { FaXTwitter, FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn, FaWhatsapp } from "react-icons/fa6";
 import { FaTiktok } from "react-icons/fa";
 import Image from 'next/image'

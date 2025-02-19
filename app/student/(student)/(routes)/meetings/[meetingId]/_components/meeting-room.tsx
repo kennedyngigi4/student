@@ -7,9 +7,11 @@ import React, { useState } from 'react'
 
 const MeetingRoom = () => {
 
-    const [layout, setLayout] = useState<CallLayoutType>('speaker-left')
+    const [layout, setLayout] = useState<CallLayoutType>('speaker-left');
 
     const CallLayout = () => {
+        setLayout('speaker-left');
+        
         switch(layout){
             case 'grid':
                 return <PaginatedGridLayout />

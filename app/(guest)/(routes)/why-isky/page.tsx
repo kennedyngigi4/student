@@ -2,8 +2,6 @@
 
 import React from 'react'
 import Image from 'next/image'
-import Partners from '../../_components/partners'
-import Testimonials from '../../_components/testimonials'
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
 import Autoplay from "embla-carousel-autoplay";
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'

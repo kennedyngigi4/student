@@ -1,8 +1,6 @@
 "use client"
 
 import React, { useEffect, useState } from 'react'
-import Image from 'next/image'
-import axios from "axios";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from 'react-hook-form';
@@ -143,7 +141,7 @@ const SigninPage = () => {
                         </form>
                     </Form>
                     <div className="mt-3">
-                        <p className=" text-black py-5 text-lg font-lato font-normal">Don't have an account? <Link className="text-isky_blue font-bold" href="/join/signup">Sign up</Link></p>
+                        <p className=" text-black py-5 text-lg font-lato font-normal">You do not have an account? <Link className="text-isky_blue font-bold" href="/join/signup">Sign up</Link></p>
                     </div>
                 </div>
             </div>

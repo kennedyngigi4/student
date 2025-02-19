@@ -4,15 +4,14 @@ import { Button } from '@/components/ui/button';
 import axios from 'axios';
 import { ArrowBigRight } from 'lucide-react';
 import { useSession } from 'next-auth/react';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 
 interface ChapterDetailsProps{
     courseId: string;
-    currentChapterId: Number;
-    chapterCount: Number;
+    currentChapterId: number;
+    chapterCount: number;
     purchasedId: string;
 }
 
@@ -43,7 +42,7 @@ const ChapterDetails = ({ courseId, currentChapterId, chapterCount, purchasedId 
 
         getData();
         
-    }, [currentChapterId, courseId]);
+    }, [currentChapterId, courseId, session?.accessToken]);
 
     const handleVideoEnd = () => {
         toast.success("Congratulations for completing this chapter");
@@ -78,7 +77,7 @@ const ChapterDetails = ({ courseId, currentChapterId, chapterCount, purchasedId 
             headers: {
                 'Authorization': `Token ${session?.accessToken}`
             }
-        }).then((response) => {
+        }).then(() => {
             router.push(`/student/courses/${courseId}/${purchasedId}/certificate`);
         }).catch(() => {
             toast.error("Something went wrong");

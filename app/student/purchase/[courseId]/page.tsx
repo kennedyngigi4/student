@@ -23,7 +23,7 @@ const StudentCoursePurchase = ({
       toast.error("Something went wrong");
     });
     
-  }, []);
+  }, [resolvedParmas.courseId]);
 
 
   const handlePayments = async() => {

@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 const StudentPaymentsLayout = ({
     children
 } : { children: React.ReactNode }) => {
-  const { data:session, status } = useSession();
+  const { status } = useSession();
 
   useEffect(() => {
     if (status != "authenticated") {

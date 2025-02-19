@@ -45,20 +45,20 @@ const CoursesPage = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-x-5 gap-y-6">
-              {courses.map((course: any) => (
-                <div key={course.course_id}>
-                  <Link href={`/courses/${course.course_id}/${course?.title}`} >
+              {courses.map((course) => (
+                <div key={course?.course_id}>
+                  <Link href={`/courses/${course?.course_id}/${course?.title}`} >
                     <Card className="relative bg-transparent hover:cursor-pointer shadow hover:shadow-lg">
-                      {course.price > 30
+                      {course?.price > 30
                         ? (<>
                           <Badge className="absolute bg-isky_orange text-white">Top selling</Badge>
                         </>)
                         : (<></>)
                       }
                       <CardContent>
-                        <Image src={course.imagePath} width={300} height={300} alt={course.title} className="pt-5 rounded-xl" />
-                        <h1 className="text-md font-semibold leading-5 line-clamp-2 pt-2">{course.title}</h1>
-                        <p className="pt-4 line-clamp-2 text-slate-500 text-sm">{course.description}</p>
+                        <Image src={course?.imagePath} width={300} height={300} alt={course?.title} className="pt-5 rounded-xl" />
+                        <h1 className="text-md font-semibold leading-5 line-clamp-2 pt-2">{course?.title}</h1>
+                        <p className="pt-4 line-clamp-2 text-slate-500 text-sm">{course?.description}</p>
 
                         <div className="flex gap-x-1 py-3">
                           <p className="text-sm font-semibold">4.5</p>

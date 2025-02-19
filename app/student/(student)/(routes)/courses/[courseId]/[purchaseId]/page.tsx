@@ -5,9 +5,6 @@ import { useSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 import Image from 'next/image';
-import CourseDetails from './_components/course-details';
-import ChapterDetails from './_components/chapter-details';
-import Loader from '@/components/Loader';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
@@ -28,10 +25,10 @@ const PurchaseIdPage = ({
             }
         }).then((response) => {
             setPurchaseDetails(response.data);
-        }).catch((error) => {
+        }).catch(() => {
             toast.error("Something went wrong");
         })
-    }, [])
+    }, [resolvedParams?.purchaseId, session?.accessToken])
 
 
     useEffect(() => {
@@ -41,10 +38,10 @@ const PurchaseIdPage = ({
             }
         }).then((response) => {
             setCourseDetails(response.data)
-        }).catch((error) => {
+        }).catch(() => {
             toast.error("Something went wrong");
         })
-    }, []);
+    }, [resolvedParams?.courseId, session?.accessToken]);
 
 
     const handleStart = () => {
@@ -59,7 +56,7 @@ const PurchaseIdPage = ({
         }).then((response) => {
             setCourseDetails(response.data);
             location.reload();
-        }).catch((error) => {
+        }).catch(() => {
             toast.error("Something went wrong");
         })
     }
@@ -99,7 +96,7 @@ const PurchaseIdPage = ({
             <h1 className="font-semibold font-bubblegum text-xl pt-4">Course Chapters</h1>
 
             <div>
-                {Object.values(courseDetails.chapters || {}).map((chapter: any) => (
+                {Object.values(courseDetails.chapters || {}).map((chapter) => (
                     <div className="grid md:grid-cols-12 grid-cols-1 border-b-2 py-3"  key={chapter?.chapter_id}>
                         <div className="col-span-4">
                             <h1 className="font-bubblegum text-isky_orange">Title</h1>
@@ -107,7 +104,7 @@ const PurchaseIdPage = ({
                         </div>
                         <div className="col-span-4">
                             <h1 className="font-bubblegum text-isky_orange">Published</h1>
-                            {chapter.is_published ? (
+                            {chapter?.is_published ? (
                                 <Badge className="bg-green-600 text-xs">Published</Badge>
                             ) : (
                                 <Badge className="bg-slate-700 text-xs">Coming soon</Badge>
@@ -133,19 +130,13 @@ const PurchaseIdPage = ({
 
         <div className="py-6">
             <h1 className="font-semibold font-bubblegum text-xl pt-4 pb-3">Course Attachments</h1>
-            {Object.values(courseDetails.attachments || {}).map((attachment: any) => (
-                <p key={attachment.attachment_id}>
+            {Object.values(courseDetails.attachments || {}).map((attachment) => (
+                <p key={attachment?.attachment_id}>
                     <a className="flex pb-4" href={`${attachment?.attached_file}`} target='_blank'><Files className="h-5 w-5 mr-2" /> {attachment?.attached_file.split("/").at(-1)}</a>
                 </p>
             ))}
 
         </div>
-
-
-        {/* {purchaseDetails?.progress == 0.0 
-            ? <CourseDetails courseData={courseDetails} onStart={handleStart} /> 
-              : <ChapterDetails courseId={resolvedParams?.courseId} chapterCount={courseDetails?.chapters?.length} purchasedId={purchaseDetails?.id}  currentChapterId={purchaseDetails?.progress} />
-        } */}
       </section>
   )
 }

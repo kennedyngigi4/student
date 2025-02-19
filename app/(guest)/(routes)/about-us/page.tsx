@@ -1,9 +1,8 @@
 "use client"
 
-import { BrainCircuit, MoveRight } from 'lucide-react'
+import { MoveRight } from 'lucide-react'
 import React from 'react'
 import Image from 'next/image'
-import Partners from '../../_components/partners'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'

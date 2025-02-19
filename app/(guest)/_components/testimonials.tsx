@@ -1,7 +1,6 @@
 import React from 'react';
-import { Carousel, CarouselItem, CarouselContent, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { Carousel, CarouselItem, CarouselContent } from '@/components/ui/carousel';
 import Autoplay from "embla-carousel-autoplay";
-import { Card, CardContent } from '@/components/ui/card'
 import Image from 'next/image';
 
 const Testimonials = () => {

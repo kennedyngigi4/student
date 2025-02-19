@@ -1,6 +1,6 @@
 "use client"
 
-import { Award, FileQuestion, Layout, LibraryBig, SquareCode, Video } from 'lucide-react'
+import { Award, Layout, LibraryBig, SquareCode, Video } from 'lucide-react'
 import React from 'react'
 import SidebarItem from './sidebar-item'
 

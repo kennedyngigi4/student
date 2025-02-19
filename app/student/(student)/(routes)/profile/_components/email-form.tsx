@@ -1,14 +1,11 @@
 "use client"
 import React, { useState } from 'react'
-import axios from 'axios'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
-import { Form, FormField, FormControl, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
-import { Button } from '@/components/ui/button'
+import { Form, FormField, FormControl, FormItem, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import toast from 'react-hot-toast'
-import { Pencil } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 interface EmailFormProps {
@@ -24,7 +21,7 @@ const formSchema = z.object({
 })
 
 const EmailForm = ({
-    initialData, userId
+    initialData
 }: EmailFormProps) => {
 
     const [isEditing, setIsEditing  ] = useState(false);
@@ -38,8 +35,6 @@ const EmailForm = ({
         }
     });
 
-    const { isValid, isSubmitting  } = form.formState;
-
     const onSubmit = (values: z.infer<typeof formSchema>) => {
         try{
             console.log(values);
@@ -50,7 +45,7 @@ const EmailForm = ({
 
   return (
     <section className="bg-slate-100 p-4 rounded-md mt-6">
-        <div className="font-medium flex items-center justify-between">
+        <div className="font-medium flex items-center justify-between" onClick={toggleEdit}>
             Email
         </div>
 

@@ -4,7 +4,6 @@ import axios from 'axios';
 import { useSession } from 'next-auth/react';
 import React, { useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
-import ChapterDetails from '../_components/chapter-details';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 
@@ -29,7 +28,7 @@ const ChapterIdPage = ({ params } : { params: { courseId: string, purchaseId: st
         }).catch(() => {
             toast.error("Something went wrong");
         })
-    }, []);
+    }, [resolvedParams?.courseId, session?.accessToken]);
 
 
     useEffect(() => {
@@ -43,7 +42,7 @@ const ChapterIdPage = ({ params } : { params: { courseId: string, purchaseId: st
         }).catch(() => {
             toast.error("Something went wrong");
         })
-    }, []);
+    }, [resolvedParams?.chapterId, session?.accessToken]);
 
 
     useEffect(() => {
@@ -58,7 +57,7 @@ const ChapterIdPage = ({ params } : { params: { courseId: string, purchaseId: st
             toast.error("Something went wrong");
         })
         
-    }, []);
+    }, [resolvedParams?.purchaseId, session?.accessToken]);
 
 
     const handleVideoEnd = () => {
@@ -92,7 +91,7 @@ const ChapterIdPage = ({ params } : { params: { courseId: string, purchaseId: st
             headers: {
                 'Authorization': `Token ${session?.accessToken}`
             }
-        }).then((response) => {
+        }).then(() => {
             router.push(`/student/courses/${resolvedParams?.courseId}/${resolvedParams?.purchaseId}`);
         }).catch(() => {
             toast.error("Something went wrong");
@@ -103,7 +102,7 @@ const ChapterIdPage = ({ params } : { params: { courseId: string, purchaseId: st
         <section className="p-6 flex flex-col min-h-screen">
             <div>
                 {chapterData?.videoPath && (
-                    <video ref={videoRef} controls className="w-full" onEnded={handleVideoEnd} autoPlay>
+                    <video ref={videoRef} className="w-full" onEnded={handleVideoEnd} autoPlay>
                         <source src={chapterData?.videoPath} type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>

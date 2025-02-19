@@ -17,7 +17,7 @@ import MarketingForm from './_components/marketing-form';
 
 
 const ProfilePage = () => {
-    const { data: session, status } = useSession();
+    const { data: session } = useSession();
     const [ user, setUser ] = useState({});
 
     const logOut = async () => {
@@ -33,7 +33,7 @@ const ProfilePage = () => {
         }).then((response) => {
             setUser(response.data)
         })
-    }, [])
+    }, [session?.accessToken])
 
 
     return (

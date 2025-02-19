@@ -1,6 +1,5 @@
 "use client"
 import React, { useState } from 'react'
-import axios from 'axios'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
@@ -24,7 +23,7 @@ const formSchema = z.object({
 })
 
 const GenderForm = ({
-    initialData, userId
+    initialData
 }: GenderFormProps) => {
 
     const [isEditing, setIsEditing  ] = useState(false);
@@ -37,8 +36,6 @@ const GenderForm = ({
             gender: "",
         }
     });
-
-    const { isValid, isSubmitting  } = form.formState;
 
     const onSubmit = (values: z.infer<typeof formSchema>) => {
         try{

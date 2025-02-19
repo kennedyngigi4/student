@@ -21,10 +21,10 @@ const PurchasedCourses = () => {
             }
         }).then((response) => {
             setPurchasedCourses(response.data);
-        }).catch((error) => {
+        }).catch(() => {
             toast.error("Something went wrong");
         })
-    }, []);
+    }, [session?.accessToken]);
 
   return (
     <div>

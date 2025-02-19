@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useState } from 'react'
-import Image from 'next/image'
 import axios from "axios";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -49,7 +48,7 @@ const SignupPage = () => {
 
     const onSubmit = async(values: z.infer<typeof formSchema>) => {
 
-        let studentData = {
+        const studentData = {
             fullname: values.fullname,
             email: values.email,
             phone: values.phone,
@@ -71,7 +70,7 @@ const SignupPage = () => {
                             router.push("/student/dashboard")
                         }
                     }
-                }).catch((error) => {
+                }).catch(() => {
                     toast.error("Something went wrong", { style: { background: "red", color: "#ffffff" } })
                 })
             

@@ -1,8 +1,6 @@
 "use client"
 
 import React from 'react'
-import Image from 'next/image'
-import axios from "axios";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from 'react-hook-form';
@@ -22,15 +20,12 @@ const formSchema = z.object({
 })
 
 const ResetPasswordPage = () => {
-    const router = useRouter();
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             email: "",
         }
     });
-
-    const { isValid, isSubmitting } = form.formState;
 
     const onSubmit = (values: z.infer<typeof formSchema>) => {
         console.log(values)

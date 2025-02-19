@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from './_components/navbar'
 import Sidebar from './_components/sidebar'
-import { useSession, getSession } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation';
 import StudentFooter from './_components/footer'
 import StreamVideoProvider from '@/providers/StreamClientProvider'
@@ -12,7 +12,7 @@ const StudentLayout = ({
     children
 }: Readonly<{ children: React.ReactNode}>) => {
   const router = useRouter();
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

@@ -3,12 +3,11 @@
 import React from 'react'
 import { useSession } from 'next-auth/react'
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Book, Files, Rocket, Trophy } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Rocket, Trophy } from 'lucide-react';
 import PurchasedCourses from '../../_components/purchased-courses';
 
 const StudentDashboard = () => {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
 
   return (
     <section className="p-6 bg-slate-50 min-h-screen">

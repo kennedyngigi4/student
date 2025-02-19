@@ -1,8 +1,6 @@
 "use client"
 import axios from 'axios';
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Book, Files } from 'lucide-react';
 import { useSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
@@ -20,10 +18,10 @@ const StudentCoursesPage = () => {
       }
     }).then((response) => {
       setPurchasedCourses(response.data);
-    }).catch((error) => {
+    }).catch(() => {
       toast.error("Something went wrong");
     })
-  }, []);
+  }, [session?.accessToken]);
 
   return (
     <section className="p-6 min-h-screen">

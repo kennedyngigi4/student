@@ -1,10 +1,9 @@
 "use client"
 import React, { useState } from 'react'
-import axios from 'axios'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
-import { Form, FormField, FormControl, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import { Form, FormField, FormControl, FormItem, FormMessage } from '@/components/ui/form'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import toast from 'react-hot-toast'
@@ -14,7 +13,7 @@ import { cn } from '@/lib/utils'
 interface FullnameFormProps {
     initialData: {
         fullname: string;
-    }
+    },
     userId: string;
 }
 
@@ -24,7 +23,7 @@ const formSchema = z.object({
 })
 
 const FullnameForm = ({
-    initialData, userId
+    initialData
 }: FullnameFormProps) => {
 
     const [isEditing, setIsEditing  ] = useState(false);
@@ -37,8 +36,6 @@ const FullnameForm = ({
             fullname: "",
         }
     });
-
-    const { isValid, isSubmitting  } = form.formState;
 
     const onSubmit = (values: z.infer<typeof formSchema>) => {
         try{
