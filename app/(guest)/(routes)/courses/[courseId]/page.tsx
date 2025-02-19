@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, use } from 'react'
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import toast from "react-hot-toast";
@@ -12,10 +12,11 @@ import Image from 'next/image';
 import ChaptersList from '@/app/(guest)/_components/chapters-list';
 import { Button } from '@/components/ui/button';
 
-const CourseIdPage = ({
-    params
-} : { params: { courseId: string }}) => {
-    const resolvedParams = React.use(params);
+
+type Params = Promise<{ courseId: string  }>;
+
+const CourseIdPage = (props: { params: Params }) => {
+    const resolvedParams = use(props.params);
     const [ course, setCourse ] = useState({});
     const [courses, setCourses] = useState([]);
     const router = useRouter();
