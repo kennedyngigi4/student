@@ -1,17 +1,17 @@
 "use client"
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, use } from 'react'
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { Button } from '@/components/ui/button';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
-const StudentCoursePurchase = ({
-  params
-} : { params: { courseId: string }}) => {
+
+type Params = Promise<{ courseId: string }>;
+const StudentCoursePurchase = (props: { params: Params }) => {
   const { data:session } = useSession();
-  const resolvedParmas = React.use(params);
+  const resolvedParmas = use(props.params);
   const router = useRouter();
   const [ course, setCourse ] = useState({});
 
