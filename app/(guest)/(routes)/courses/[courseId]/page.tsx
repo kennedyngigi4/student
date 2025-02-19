@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 
 const CourseIdPage = ({
     params
-} : { params: { courseId: string } }) => {
+} : { params: Promise<{ courseId: string }> }) => {
     const resolvedParmas = React.use(params);
     const router = useRouter();
     const [ isMounted, setIsMounted ] = useState(false);
