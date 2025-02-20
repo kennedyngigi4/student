@@ -16,11 +16,11 @@ const WhyIskyPage = () => {
 
   return (
     <section className="w-full">
-      <section className="bg-[url(/images/bg/1.jpg)] bg-cover bg-center">
-        <div className="flex flex-col items-center justify-center bg-isky_blue bg-opacity-75 h-[400px]">
+      <section className="bg-[url(/images/bg/3.png)] bg-cover bg-center md:block hidden">
+        <div className="flex flex-col items-center justify-center bg-isky_blue bg-opacity-15 h-[500px]">
           <div className="md:w-[40%] w-[90%] text-center">
-            <h1 className="text-3xl text-white font-extrabold">Empowering the Next Generation with Smart Learning Solutions!</h1>
-            <p className="text-white text-lg pt-5">Discover why ISKY TECH is the preferred choice for young learners and educators alike.</p>
+            {/* <h1 className="text-3xl text-white font-extrabold">Empowering the Next Generation with Smart Learning Solutions!</h1>
+            <p className="text-white text-lg pt-5">Discover why ISKY TECH is the preferred choice for young learners and educators alike.</p> */}
           </div>
 
         </div>
@@ -45,8 +45,8 @@ const WhyIskyPage = () => {
             <CarouselItem className="md:basis-1/2 lg:basis-1/4">
               <Card className="border-0 text-center h-ful shadow-none hover:cursor-pointer">
                 <CardHeader>
-                  <div className="bg-isky_blue mx-auto flex items-center justify-center w-[70px] h-[70px] p-3 rounded-full">
-                    <Laptop className="h-10 w-10 text-white" />
+                  <div className="mx-auto flex items-center justify-center w-[100px] h-[100px] p-3 rounded-full">
+                    <Image src="/images/icons/f1.png" width={250} height={250} alt="Higher Engagement and Motivation" />
                   </div>
 
                   <CardTitle className="text-isky_orange hover:text-isky_blue">
@@ -64,8 +64,8 @@ const WhyIskyPage = () => {
             <CarouselItem className="md:basis-1/2 lg:basis-1/4">
               <Card className="border-0 text-center h-ful shadow-none hover:cursor-pointer">
                 <CardHeader>
-                  <div className="bg-isky_blue mx-auto flex items-center justify-center w-[70px] h-[70px] p-3 rounded-full">
-                    <User2Icon className="h-10 w-10 text-white" />
+                  <div className="mx-auto flex items-center justify-center w-[100px] h-[100px] p-3 rounded-full">
+                    <Image src="/images/icons/c2.png" width={250} height={250} alt="Higher Engagement and Motivation" />
                   </div>
 
                   <CardTitle className="text-isky_orange hover:text-isky_blue">
@@ -83,8 +83,8 @@ const WhyIskyPage = () => {
             <CarouselItem className="md:basis-1/2 lg:basis-1/4">
               <Card className="border-0 text-center h-ful shadow-none hover:cursor-pointer">
                 <CardHeader>
-                  <div className="bg-isky_blue mx-auto flex items-center justify-center w-[70px] h-[70px] p-3 rounded-full">
-                    <BriefcaseBusiness className="h-10 w-10 text-white" />
+                  <div className="mx-auto flex items-center justify-center w-[100px] h-[100px] p-3 rounded-full">
+                    <Image src="/images/icons/f4.png" width={250} height={250} alt="Higher Engagement and Motivation" />
                   </div>
 
                   <CardTitle className="text-isky_orange hover:text-isky_blue">
@@ -102,8 +102,8 @@ const WhyIskyPage = () => {
             <CarouselItem className="md:basis-1/2 lg:basis-1/4">
               <Card className="border-0 text-center h-ful shadow-none hover:cursor-pointer">
                 <CardHeader>
-                  <div className="bg-isky_blue mx-auto flex items-center justify-center w-[70px] h-[70px] p-3 rounded-full">
-                    <ShieldBan className="h-10 w-10 text-white" />
+                  <div className="mx-auto flex items-center justify-center w-[100px] h-[100px] p-3 rounded-full">
+                    <Image src="/images/icons/f3.png" width={250} height={250} alt="Higher Engagement and Motivation" />
                   </div>
 
                   <CardTitle className="text-isky_orange hover:text-isky_blue">
@@ -121,8 +121,8 @@ const WhyIskyPage = () => {
             <CarouselItem className="md:basis-1/2 lg:basis-1/4">
               <Card className="border-0 text-center h-ful shadow-none hover:cursor-pointer">
                 <CardHeader>
-                  <div className="bg-isky_blue mx-auto flex items-center justify-center w-[70px] h-[70px] p-3 rounded-full">
-                    <LightbulbIcon className="h-10 w-10 text-white" />
+                  <div className="mx-auto flex items-center justify-center w-[100px] h-[100px] p-3 rounded-full">
+                    <Image src="/images/icons/c3.png" width={250} height={250} alt="Higher Engagement and Motivation" />
                   </div>
 
                   <CardTitle className="text-isky_orange hover:text-isky_blue">
@@ -140,8 +140,8 @@ const WhyIskyPage = () => {
             <CarouselItem className="md:basis-1/2 lg:basis-1/4">
               <Card className="border-0 text-center h-ful shadow-none hover:cursor-pointer">
                 <CardHeader>
-                  <div className="bg-isky_blue mx-auto flex items-center justify-center w-[70px] h-[70px] p-3 rounded-full">
-                    <HandshakeIcon className="h-10 w-10 text-white" />
+                  <div className="mx-auto flex items-center justify-center w-[100px] h-[100px] p-3 rounded-full">
+                    <Image src="/images/icons/f1.png" width={250} height={250} alt="Higher Engagement and Motivation" />
                   </div>
 
                   <CardTitle className="text-isky_orange hover:text-isky_blue">
@@ -162,16 +162,16 @@ const WhyIskyPage = () => {
       <section className="bg-lightblue">
         <section className=''>
           <div className="">
-            <div className="grid grid-cols-12 md:grid-cols-12 gap-x-14">
-              <div className="col-span-6 max-md:col-span-12 bg-[url(/images/others/about/1.jpg)] bg-cover bg-center">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-x-14">
+              <div className="md:col-span-6 bg-[url(/images/others/about/1.jpg)] bg-cover bg-center">
                 {/* <Image src="/images/others/main.webp" width={280} height={360} className="w-full pt-28" alt="ISKY TECH Solutions" /> */}
               </div>
-              <div className="col-span-6 max-md:col-span-12 max-md:px-10 flex flex-col gap-y-5 py-8 pr-16">
+              <div className="md:col-span-6 max-md:px-10 flex flex-col gap-y-5 py-8 pr-16">
                 <h1 className="text-3xl font-bold">Challenges We Address</h1>
                 <div>
                   <div className='grid grid-cols-1 border border-slate-300 bg-white hover:border-isky_blue hover:cursor-pointer rounded-3xl md:grid-cols-12 p-5'>
                     <div className="col-span-3">
-                      <Image src="/images/icons/1.png" width={100} height={100} alt="Higher Engagement and Motivation" />
+                      <Image src="/images/icons/c1.png" width={100} height={100} alt="Higher Engagement and Motivation" />
                     </div>
                     <div className="col-span-9">
                       <h6 className="text-isky_orange font-semibold">Higher Engagement and Motivation</h6>
@@ -186,7 +186,7 @@ const WhyIskyPage = () => {
                 <div className="">
                   <div className='grid grid-cols-1 border border-slate-300 bg-white hover:border-isky_blue hover:cursor-pointer rounded-3xl md:grid-cols-12 p-5'>
                     <div className="col-span-3">
-                      <Image src="/images/icons/2.png" width={100} height={100} alt="Higher Engagement and Motivation" />
+                      <Image src="/images/icons/c2.png" width={100} height={100} alt="Higher Engagement and Motivation" />
                     </div>
                     <div className="col-span-9">
                       <h6 className="text-isky_orange font-semibold">Focused Niche Audience</h6>
@@ -200,7 +200,7 @@ const WhyIskyPage = () => {
                 <div>
                   <div className='grid grid-cols-1 border border-slate-300 bg-white hover:border-isky_blue hover:cursor-pointer rounded-3xl md:grid-cols-12 p-5'>
                     <div className="col-span-3">
-                      <Image src="/images/icons/3.png" width={100} height={100} alt="Higher Engagement and Motivation" />
+                      <Image src="/images/icons/c3.png" width={100} height={100} alt="Higher Engagement and Motivation" />
                     </div>
                     <div className="col-span-9">
                       <h6 className="text-isky_orange font-semibold">Technology Gap</h6>
@@ -221,11 +221,11 @@ const WhyIskyPage = () => {
 
 
       <section className="flex flex-col bg-[url(/images/bg/2.jpg)] bg-cover bg-center">
-        <div className="flex flex-col items-center justify-center bg-isky_orange bg-opacity-75 h-[400px]">
+        <div className="flex flex-col items-center justify-center bg-isky_orange bg-opacity-75 md:h-[400px] h-[700px]">
           <div className="md:w-[40%] w-[90%] mx-auto text-center pb-8">
             <h1 className="text-white text-2xl font-bold">Our Statistics</h1>
           </div>
-          <div className="flex md:flex-row flex-col gap-y-5 gap-x-4 justify-between items-center">
+          <div className="grid md:grid-cols-4 gap-3 grid-cols-1">
             <Card className="pt-4 w-full h-full">
               <CardContent>
                 <AnimatedCounter value={100} />
