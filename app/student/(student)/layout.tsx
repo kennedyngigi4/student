@@ -12,11 +12,11 @@ const StudentLayout = ({
     children
 }: Readonly<{ children: React.ReactNode}>) => {
   const router = useRouter();
-  const { status } = useSession();
+  const { data:session, status } = useSession();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if(status == "unauthenticated"){
+    if (status == "unauthenticated" ){
       router.push("/join/signin");
     } else {
       setLoading(false);
