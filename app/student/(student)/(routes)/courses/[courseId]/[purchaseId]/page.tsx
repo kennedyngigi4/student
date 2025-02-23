@@ -81,7 +81,7 @@ const PurchaseIdPage = (props: { params: Params }) => {
                         <Button className="bg-green-800 text-white" onClick={handleStart}>Get started</Button>
                     </div>
                 )}
-                {purchaseDetails.progress == courseDetails?.chapters?.length && (
+                {(purchaseDetails.progress == courseDetails?.chapters?.length && purchaseDetails.is_complete ) && (
                     <div className="flex mt-3 gap-x-3">
                         <a href={`${certificate_url}`} target='_blank'>
                             <Button className="bg-green-800 text-white">Download Certificate</Button>
@@ -113,14 +113,21 @@ const PurchaseIdPage = (props: { params: Params }) => {
                             <h3></h3>
                         </div>
                         <div className="col-span-4">
-                            {chapter?.position < purchaseDetails?.progress && (
-                                <p className="text-green-800">Completed</p>
+                            {(chapter?.position < purchaseDetails?.progress) && (
+                                <Link href={`/student/courses/${resolvedParams?.courseId}/${resolvedParams?.purchaseId}/${chapter?.chapter_id}`}>
+                                    <p className="text-green-800">Completed</p>
+                                </Link>
                             )}
-                            {chapter?.position == purchaseDetails?.progress && (
+                            {(chapter?.position == purchaseDetails?.progress && !purchaseDetails?.is_complete) && (
                                 <Link href={`/student/courses/${resolvedParams?.courseId}/${resolvedParams?.purchaseId}/${chapter?.chapter_id}`}>
                                     <Button className="bg-green-800">Continue</Button>
                                 </Link>
                                
+                            )}
+                            {(chapter?.position == purchaseDetails?.progress && purchaseDetails?.is_complete ) && (
+                                <Link href={`/student/courses/${resolvedParams?.courseId}/${resolvedParams?.purchaseId}/${chapter?.chapter_id}`}>
+                                    <p className="text-green-800">Completed</p>
+                                </Link>
                             )}
                         </div>
                     </div>

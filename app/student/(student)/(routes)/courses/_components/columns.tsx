@@ -51,10 +51,18 @@ export const columns: ColumnDef<Payment>[] = [
         header: "Action",
         cell: ({row}) => {
             const { id, course } = row.original;
+            const isComplete = row.getValue("is_complete");
 
             return (
                 <Link href={`/student/courses/${course}/${id}/`}>
-                    <Button variant="outline" size="sm">Continue</Button>
+                    {isComplete
+                        ? <>
+                            <p className="font-semibold text-sm text-green-800">Details</p>
+                        </>
+                        : <>
+                            <Button variant="outline" size="sm">Continue</Button>
+                        </>
+                    }
                 </Link>
             )
         }

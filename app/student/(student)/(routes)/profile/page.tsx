@@ -49,7 +49,7 @@ const ProfilePage = () => {
                 </div>
             </div>
             <div className="col-span-12 md:col-span-8 bg-white p-6 rounded-lg">
-                <h1 className="font-semibold text-2xl">Your profile data</h1>
+                <h1 className="font-semibold text-2xl font-bubblegum">Your profile data</h1>
 
                 <div>
                     <EmailForm

@@ -44,11 +44,13 @@ const StudentCoursePurchase = (props: { params: Params }) => {
       }
     }).then((response) => {
       console.log(response.data)
-      if(response.data = 201){
+      if(response.data == 201){
+        toast.success("Purchase successful!");
         router.push("/student/dashboard")
+      } if (response.data == 409) {
+        toast.error("You have enrolled to this course already.")
       } else {
         toast.error("Something went wrong");
-        return;
       }
       
     }).catch((error) => {
@@ -59,7 +61,7 @@ const StudentCoursePurchase = (props: { params: Params }) => {
   }
 
   return (
-    <section className="shadow-md border-red-300 w-[60%] rounded-2xl">
+    <section className="shadow-md border-red-300 md:w-[60%] rounded-2xl">
       <div className="bg-cover bg-center w-full h-[300px] rounded-lg" style={{ backgroundImage: `url(${course?.imagePath})` }}>
 
       </div>

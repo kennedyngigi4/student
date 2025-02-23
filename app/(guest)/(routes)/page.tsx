@@ -15,9 +15,8 @@ import Sliders from '../_components/sliders'
 const HomePage = () => {
   const [ courses, setCourses ] = useState([]);
   useEffect(() => {
-    axios.get(`${process.env.NEXT_PUBLIC_APIURL}/courses/`)
+    axios.get(`${process.env.NEXT_PUBLIC_APIURL}/courses/courses`)
         .then(( response) => {
-          console.log(response.data)
           setCourses(response.data);
         });
     
@@ -195,7 +194,7 @@ const HomePage = () => {
 
           <div className="grid md:grid-cols-4 grid-cols-1 gap-6">
 
-            {courses.map((course) => (
+            {courses.slice(0,8).map((course) => (
               <div key={course?.course_id}>
                 <Link href={`/courses/${course?.course_id}`} >
                   <Card className="bg-transparent hover:cursor-pointer shadow-none border-4 border-dotted border-isky_blue hover:border-isky_orange">

@@ -47,7 +47,7 @@ const FullnameForm = ({
 
   return (
     <section className="bg-slate-100 p-4 rounded-md mt-6">
-        <div className="font-medium flex items-center justify-between">
+        <div className="font-medium flex items-center font-bubblegum justify-between">
             Full Name
             <Button onClick={toggleEdit} variant="ghost">
                 {isEditing 

@@ -57,7 +57,7 @@ const CourseIdPage = (props: { params: Params }) => {
     ]
 
     useEffect(() => {
-        axios.get(`${process.env.NEXT_PUBLIC_APIURL}/courses/`)
+        axios.get(`${process.env.NEXT_PUBLIC_APIURL}/courses/courses`)
         .then((response) => {
             setCourses(response.data);
         }).catch(() => {
@@ -78,8 +78,8 @@ const CourseIdPage = (props: { params: Params }) => {
     return (
         <section className="flex flex-col w-full">
 
-            <div className="w-full h-[450] bg-cover bg-no-repeat bg-center" style={{ backgroundImage: `url(${course.imagePath})` }}>
-                <div className="bg-gradient-to-r grid grid-cols-1 md:grid-cols-12 py-16 px-20 justify-center  items-start from-isky_blue from-20% h-full">
+            <div className="w-full md:h-[450] bg-cover bg-no-repeat bg-center" style={{ backgroundImage: `url(${course.imagePath})` }}>
+                <div className="bg-gradient-to-r grid grid-cols-1 md:grid-cols-12 py-16 md:px-20 px-5 justify-center  items-start from-isky_blue from-20% h-full">
 
                     <div className="flex flex-col col-span-6">
                         <span className="flex flex-row  gap-x-1 text-white font-semibold"><GraduationCap /> {course.level}</span>
@@ -110,18 +110,17 @@ const CourseIdPage = (props: { params: Params }) => {
             </div>
 
 
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-x-10 px-20 py-10">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-x-10 md:px-20 px-5 py-10">
                 {/* COLUMN 1 */}
-                <div className="col-span-8">
+                <div className="md:col-span-8">
                     <div className="border-2 p-6">
                         <h1 className="pb-3 font-semibold text-xl text-isky_orange">Tech skills you will learn</h1>
 
-                        <div className="grid grid-cols-3 md:grid-cols-5 gap-1">
+                        <div className="grid grid-cols-5 md:grid-cols-5 max-md:space-y-5 gap-1">
                             {techs.map((tech) => (
                                 <div key={tech.id}>
                                     <Image src={tech.logo} width={40} height={40} alt="" />
                                 </div>
-                                // <Badge key={skill} className="py-1 px-3 font-normal bg-slate-100" variant="outline">{skill}</Badge>
                             ))}
                         </div>
                     </div>
@@ -141,7 +140,7 @@ const CourseIdPage = (props: { params: Params }) => {
                 </div>
 
                 {/* COLUMN 2 */}
-                <div className="col-span-4">
+                <div className="md:col-span-4 max-md:pt-10">
                     <video className="" width="900" height="440" autoPlay controls preload="none">
                         <source src={course.previewVideoURL} type="video/mp4" />
                         <track

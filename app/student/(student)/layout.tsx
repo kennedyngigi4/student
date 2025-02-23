@@ -16,7 +16,7 @@ const StudentLayout = ({
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if(status != "authenticated"){
+    if(status == "unauthenticated"){
       router.push("/join/signin");
     } else {
       setLoading(false);

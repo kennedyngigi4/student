@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Menu } from 'lucide-react';
 
 import {
@@ -14,6 +14,7 @@ import { Button } from '@/components/ui/button';
 
 
 const SidebarDrawer = () => {
+    const [ isOpen, setIsOpen ] = useState(false);
     const pathname = usePathname();
     const links = [
         {
@@ -39,17 +40,18 @@ const SidebarDrawer = () => {
     ]
 
   return (
-    <Sheet>
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger className="md:hidden pr-4 hover:opacity-75 transition">
-            <Menu />
+            <Menu onClick={() => setIsOpen(true)} />
         </SheetTrigger>
         <SheetContent side="left" className="p-6 bg-white">
             <Logo />
             <ul className="flex flex-col justify-between items-baseline gap-y-3 pt-8">
                 {links.map((link) => (
-                    <li key={link.name}>
+                    <li key={link.name} onClick={() => setIsOpen(false)}>
                         <Link
                             href={link.href}
+                            
                             className={`text-isky_blue font-semibold font-lg ${pathname === link.href ? "text-isky_orange" : "text-isky_blue hover:text-isky_orange"}`}>
                             {link.name}
                         </Link>

@@ -6,10 +6,12 @@ import Link from 'next/link'
 import React from 'react'
 import { usePathname } from 'next/navigation'
 import SidebarDrawer from './sidebar'
+import { useSession } from 'next-auth/react'
 
 const NavBar = () => {
 
     const pathname = usePathname();
+    const { data:session, status } = useSession();
 
 
     const links = [
@@ -61,9 +63,17 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="max-md:hidden">
-                <Link href="/join/signin">
-                    <Button variant="outline" className={`border-isky_blue text-isky_blue hover:bg-isky_blue hover:text-white font-semibold rounded-3xl px-8 py-5 ${pathname == "/join/signin" ? "bg-isky_orange text-white border-0" : ""}`}>Login to Dashboard</Button>
-                </Link>
+                {status == "unauthenticated" 
+                    ? <>
+                        <Link href="/join/signin">
+                            <Button  variant="outline" className={`border-isky_blue text-isky_blue hover:bg-isky_blue hover:text-white font-semibold rounded-3xl px-8 py-5 ${pathname == "/join/signin" ? "bg-isky_orange text-white border-0" : ""}`}>Login to Dashboard</Button>
+                        </Link>
+                    </>
+                    :<>
+                        <Link className="truncate text-lg text-isky_orange font-bubblegum font-semibold capitalize" href="/student/dashboard">Hello {session?.user?.name}</Link>
+                    </>
+                }
+                
                 
             </div>
         </nav>

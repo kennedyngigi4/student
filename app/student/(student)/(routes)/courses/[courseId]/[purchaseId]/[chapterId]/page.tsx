@@ -95,7 +95,7 @@ const ChapterIdPage = (props: { params: Params }) => {
                 'Authorization': `Token ${session?.accessToken}`
             }
         }).then(() => {
-            router.push(`/student/courses/${resolvedParams?.courseId}/${resolvedParams?.purchaseId}`);
+            router.push(`/student/courses/${resolvedParams?.courseId}/${resolvedParams?.purchaseId}/certificate`);
         }).catch(() => {
             toast.error("Something went wrong");
         })
@@ -105,7 +105,7 @@ const ChapterIdPage = (props: { params: Params }) => {
         <section className="p-6 flex flex-col min-h-screen">
             <div>
                 {chapterData?.videoPath && (
-                    <video ref={videoRef} className="w-full" onEnded={handleVideoEnd} autoPlay>
+                    <video controls controlsList="nodownload" ref={videoRef} className="w-full" onEnded={handleVideoEnd} autoPlay>
                         <source src={chapterData?.videoPath} type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
@@ -124,8 +124,8 @@ const ChapterIdPage = (props: { params: Params }) => {
                         { courseData?.chapters?.length > progressData.progress && (
                             <div className="py-6"><Button className="px-4" onClick={handleContinue}>Continue</Button></div>
                         )}
-                        {courseData?.chapters?.length == progressData.progress && (
-                            <div className="py-6"><Button className="px-4" onClick={handleCompleted}>Completed</Button></div>
+                        {(courseData?.chapters?.length == progressData.progress && !progressData.is_complete) && (
+                            <div className="py-6"><Button className="px-4" onClick={handleCompleted}>Congratulations for completing</Button></div>       
                         )}
                     </div>
                     

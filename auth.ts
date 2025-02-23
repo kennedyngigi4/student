@@ -12,7 +12,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 password: {}
             },
             async authorize(credentials, req){
-                const res = await fetch('http://127.0.0.1:8000/api/account/login/', {
+                const res = await fetch(`${process.env.NEXT_PUBLIC_APIURL}/account/login/`, {
                     method: 'POST',
                     body: JSON.stringify(credentials),
                     headers: {

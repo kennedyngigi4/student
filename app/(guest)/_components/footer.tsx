@@ -82,10 +82,9 @@ const Footer = () => {
             <div className="md:col-span-3 sm:col-span-5 max-sm:pt-6">
                 <h1 className="font-extrabold font-lato max-sm:text-xl">Company</h1>
                 <div className="flex flex-col space-y-3 md:mt-6">
-                    <Link className="flex" href=""><ArrowRight className="h-4 w-4 mt-1 mr-2" /> About Us</Link>
-                    <Link className="flex" href=""><ArrowRight className="h-4 w-4 mt-1 mr-2" /> Why ISKY</Link>
-                    <Link className="flex" href=""><ArrowRight className="h-4 w-4 mt-1 mr-2" /> Blogs</Link>
-                    <Link className="flex" href=""><ArrowRight className="h-4 w-4 mt-1 mr-2" /> Teach on ISKY</Link>
+                      <Link className="flex" href="/about-us"><ArrowRight className="h-4 w-4 mt-1 mr-2" /> About Us</Link>
+                    <Link className="flex" href="/why-isky"><ArrowRight className="h-4 w-4 mt-1 mr-2" /> Why ISKY</Link>
+                    <Link className="flex" href="/blogs"><ArrowRight className="h-4 w-4 mt-1 mr-2" /> Blogs</Link>
                     <Link className="flex" href=""><ArrowRight className="h-4 w-4 mt-1 mr-2" /> Privacy Policy</Link>
                     <Link className="flex" href=""><ArrowRight className="h-4 w-4 mt-1 mr-2" /> Terms and Conditions</Link>
                 </div>

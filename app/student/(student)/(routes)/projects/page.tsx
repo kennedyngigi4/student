@@ -14,7 +14,7 @@ const StudentProjects = () => {
         </div>
         <div>
           <Button>
-            <PlusCircle className="h-10 w-10 pr-5 text-white" />
+            <PlusCircle className="h-4 w-4 text-white" />
             Add a Project
           </Button>
         </div>

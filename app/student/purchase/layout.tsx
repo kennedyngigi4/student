@@ -4,6 +4,7 @@ import Footer from '@/app/(guest)/_components/footer'
 import React, { useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import toast from 'react-hot-toast';
+import NavBar from '@/app/(guest)/_components/navbar';
 
 const StudentPaymentsLayout = ({
     children
@@ -19,7 +20,8 @@ const StudentPaymentsLayout = ({
 
   return (
     <section>
-        <div className="flex md:px-20 px-10 py-10 items-center justify-center h-screen">
+      <NavBar />
+        <div className="flex md:px-20 px-5 py-10 items-center justify-center">
             {children}
         </div>
         <Footer />

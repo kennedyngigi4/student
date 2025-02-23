@@ -47,14 +47,14 @@ const AgeForm = ({
 
   return (
     <section className="bg-slate-100 p-4 rounded-md mt-6">
-        <div className="font-medium flex items-center justify-between">
-            Age Range
+        <div className="font-medium flex items-center  font-bubblegum justify-between">
+            Age
             <Button onClick={toggleEdit} variant="ghost">
                 {isEditing 
                     ? <>Cancel</>
                     : <>
                         <Pencil className="h-4 w-4 mr-2" />
-                        Edit Age Range
+                        Edit Age
                     </>
                 }
             </Button>
@@ -62,7 +62,7 @@ const AgeForm = ({
 
         {!isEditing && (
             <p className={cn("text-sm font-semibold mt-2", !initialData.age_range && "text-slate-300 italic")}>
-                {initialData?.age_range || "No full name"}
+                {initialData?.age_range || "No age range"}
             </p>
         )}
 
