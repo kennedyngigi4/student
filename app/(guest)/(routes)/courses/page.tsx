@@ -37,6 +37,10 @@ const CoursesPage = () => {
 
   const badgeCategories = [
     {
+      id: 0,
+      name: " ",
+    },
+    {
       id: 1,
       name: 'Game Design',
     },
@@ -92,10 +96,10 @@ const CoursesPage = () => {
               <p className="text-lg pt-1">From critical skills to technical topics, ISKY supports your kids development.</p>
             </div>
 
-            <div className="flex flex-row overflow-x-auto whitespace-nowrap space-x-6 pt-8 pb-2 mb-8 justify-center items-center">
+            <div className="flex flex-row ps-72 overflow-x-auto whitespace-nowrap space-x-6 pt-8 pb-2 mb-8 justify-center items-center">
               {badgeCategories.map((category) => (
                 <div className="" key={category.id}>
-                  <Badge onClick={() => fetchCourses(category.name)} className="px-4 py-2 shadow-none bg-slate-500 hover:bg-isky_orange hover:text-white hover:cursor-pointer">{category.name}</Badge>
+                  <Badge onClick={() => fetchCourses(category.name)} className="px-4 py-2 shadow-none bg-slate-500 hover:bg-isky_orange hover:text-white hover:cursor-pointer">{category.name == " " ? <>All</> : <>{category.name}</>}</Badge>
                 </div>
               ))}
               
