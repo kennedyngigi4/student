@@ -62,8 +62,6 @@ const PurchaseIdPage = (props: { params: Params }) => {
         })
     }
 
-    const certificate_url = "127.0.0.1:8000"+String(purchaseDetails?.certificate_url).slice(String(purchaseDetails?.certificate_url).indexOf("/media"));
-
   return (
       <section className="p-6 min-h-screen">
         <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
@@ -83,7 +81,7 @@ const PurchaseIdPage = (props: { params: Params }) => {
                 )}
                 {(purchaseDetails.progress == courseDetails?.chapters?.length && purchaseDetails.is_complete ) && (
                     <div className="flex mt-3 gap-x-3">
-                        <a href={`${certificate_url}`} target='_blank'>
+                        <a href={`https://backend.iskytech.net${purchaseDetails?.certificatePath}`} target='_blank' rel="noopener noreferrer">
                             <Button className="bg-green-800 text-white">Download Certificate</Button>
                         </a>
                         
