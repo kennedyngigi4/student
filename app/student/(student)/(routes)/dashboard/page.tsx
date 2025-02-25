@@ -30,17 +30,17 @@ const StudentDashboard = () => {
   return (
     <section className="p-6 bg-slate-50 min-h-screen">
 
-      <div className="flex items-center justify-between gap-x-10">
-        <div className="bg-slate-50 py-5 rounded-2xl">
+      <div className="flex md:flex-row flex-col items-center justify-between gap-x-10">
+        <div className="bg-slate-50 py-5 basis-3/4 rounded-2xl">
           <h1 className="font-bubblegum text-2xl font-bold">Welcome back, {session?.user?.name}</h1>
           <p className="text-slate-600">Think it. Build it. Change the world! 🚀</p>
         </div>
 
-        <div className="flex justify-between gap-x-8">
+        <div className="flex md:flex-row basis-1/4 flex-col justify-between gap-8 w-full">
           <div className="items-start">
             <Card className="shadow-none">
               <CardContent className="p-5">
-                <Trophy className="h-5 w-5 mb-2 mx-auto text-isky_orange" />
+                <Trophy className="h-5 w-5 mb-2 md:mx-auto text-isky_orange" />
                 <p className="text-isky_blue pt-2 font-semibold">Badges</p>
               </CardContent>
             </Card>
@@ -56,7 +56,7 @@ const StudentDashboard = () => {
           <div className="items-start">
             <Card className="shadow-none">
               <CardContent className="p-5">
-                <h1 className="text-xl font-bold text-center font-bubblegum">{completedCourses?.length}</h1>
+                <h1 className="text-xl font-bold font-bubblegum">{completedCourses?.length}</h1>
                 <p className="text-isky_blue pt-2 font-semibold">Certificates</p>
               </CardContent>
             </Card>
@@ -65,8 +65,8 @@ const StudentDashboard = () => {
       </div>
       
 
-      <div className="grid md:grid-cols-12 grid-cols-12 gap-x-6 mt-10">
-        <div className="col-span-9">
+      <div className="grid md:grid-cols-12 grid-cols-1 gap-x-6 mt-10">
+        <div className="md:col-span-9">
           <div className="">
             <h1 className="font-bold font-bubblegum text-xl">Latest purchased courses</h1>
 
@@ -78,8 +78,8 @@ const StudentDashboard = () => {
 
           </div>
         </div>
-        <div className="col-span-3">
-          <div className="flex justify-between flex-col gap-y-6">
+        <div className="md:col-span-3">
+          <div className="flex justify-between flex-col gap-y-6 w-full">
             <Card className="shadow-none border-2">
               <CardContent className="py-3">
                 <h1 className="font-bubblegum text-2xl text-isky_orange">{purchasedCourses?.length}</h1>

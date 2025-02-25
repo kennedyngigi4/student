@@ -85,8 +85,8 @@ const Footer = () => {
                       <Link className="flex" href="/about-us"><ArrowRight className="h-4 w-4 mt-1 mr-2" /> About Us</Link>
                     <Link className="flex" href="/why-isky"><ArrowRight className="h-4 w-4 mt-1 mr-2" /> Why ISKY</Link>
                     <Link className="flex" href="/blogs"><ArrowRight className="h-4 w-4 mt-1 mr-2" /> Blogs</Link>
-                    <Link className="flex" href=""><ArrowRight className="h-4 w-4 mt-1 mr-2" /> Privacy Policy</Link>
-                    <Link className="flex" href=""><ArrowRight className="h-4 w-4 mt-1 mr-2" /> Terms and Conditions</Link>
+                    <Link className="flex" href="/privacy-policy"><ArrowRight className="h-4 w-4 mt-1 mr-2" /> Privacy Policy</Link>
+                    <Link className="flex" href="/terms-conditions"><ArrowRight className="h-4 w-4 mt-1 mr-2" /> Terms and Conditions</Link>
                 </div>
             </div>
         </section>
