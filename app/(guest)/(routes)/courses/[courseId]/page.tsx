@@ -52,7 +52,7 @@ const CourseIdPage = (props: { params: Params }) => {
         },
         {
             id: 5,
-            logo: "/images/icons/e5.png"
+            logo: "/images/icons/e5.PNG"
         },
     ]
 
