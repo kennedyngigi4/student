@@ -3,7 +3,8 @@ import Credentials from "next-auth/providers/credentials"
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
     pages: {
-        signIn: '/join/signin'
+        signIn: '/join/signin',
+        error: '/join/signin'
     },
     providers: [
         Credentials({
@@ -56,5 +57,4 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     
     trustHost: true,
     AUTH_TRUST_HOST: true,
-
 })

@@ -14,14 +14,17 @@ import GenderForm from './_components/gender-form';
 import AgeForm from './_components/age-form';
 import TermsForm from './_components/terms-form';
 import MarketingForm from './_components/marketing-form';
+import { useRouter } from 'next/navigation';
 
 
 const ProfilePage = () => {
     const { data: session } = useSession();
     const [ user, setUser ] = useState({});
+    const router = useRouter();
 
     const logOut = async () => {
         await signOut();
+        router.push("/");
     }
 
 

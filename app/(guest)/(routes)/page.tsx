@@ -211,7 +211,7 @@ const HomePage = () => {
           
           <div className="grid md:grid-cols-12 grid-cols-1 gap-x-4">
             <div className="md:col-span-5">
-              <Image src="/images/others/history.png" width={330} height={500} alt="Our Journey" className="" />
+              <Image src="/images/others/hist_home.jpeg" width={330} height={500} alt="Our Journey" className="" />
               
             </div>
 

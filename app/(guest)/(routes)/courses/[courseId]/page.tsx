@@ -196,7 +196,7 @@ const CourseIdPage = (props: { params: Params }) => {
                 <div className="grid md:grid-cols-4 grid-cols-1 gap-4 pt-3">
                     {courses.slice(0, 4).map((newCourse) => (
                         <div key={newCourse.course_id}>
-                            <Link href={`/courses/${newCourse.course_id}/${newCourse?.title}`}>
+                            <Link href={`/courses/${newCourse.course_id}`}>
                                 <Card className="bg-white hover:cursor-pointer shadow-none border-4 border-dotted border-isky_blue hover:border-isky_orange">
                                     <CardContent>
                                         <Image src={newCourse.imagePath} width={300} height={300} alt={newCourse.title} className="pt-5 rounded-xl" />
