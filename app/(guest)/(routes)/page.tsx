@@ -26,29 +26,6 @@ const HomePage = () => {
 
   return (
     <section>
-
-      {/* HERO AREA */}
-      {/* <section className="bg-sky-50">
-        <div className="grid md:grid-cols-12 grid-cols-12 max-lg:grid-cols-1 md:px-20 px-10 space-x-10 pt-16">
-          <div className="col-span-5">
-            <Image src="/images/others/main2.png" className="w-full" width={250} height={200} alt="ISKY TECH" />
-          </div>
-          <div className="col-span-6">
-            <p className="font-semibold text-isky_blue">Welcome to iSkyTech</p>
-            <h1 className="text-4xl font-extrabold font-lato text-isky_orange">Where Young Creators Become Tech Innovators!</h1>
-            <p className="pt-2">
-              Imagine a world where learning feels like an epic adventure! At ISKY Tech, we turn classrooms into innovation hubs, 
-              where kids and teens learn coding, robotics, game design, AI, and cybersecurity all while having a blast!
-            </p>
-            <div className="py-5">
-              <Link href="/join/signup">
-                <Button className="py-6 rounded-full bg-isky_orange hover:bg-isky_blue">GET STARTED <ArrowRight className="h-10 w-10 ml-3" /></Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section> */}
-
       <section className="">
         <Sliders />
       </section>

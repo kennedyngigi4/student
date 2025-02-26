@@ -17,6 +17,7 @@ const StudentCoursesPage = () => {
         'Authorization': `Token ${session?.accessToken}`
       }
     }).then((response) => {
+      console.log(response.data)
       setPurchasedCourses(response.data);
     }).catch(() => {
       toast.error("Something went wrong");

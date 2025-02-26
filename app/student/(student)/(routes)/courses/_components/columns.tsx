@@ -41,9 +41,12 @@ export const columns: ColumnDef<Payment>[] = [
         header: "Completion",
         cell: ({ row }) => {
             const isComplete = row.getValue("is_complete")
+            
 
             return (
-                <p className={cn("flex text-isky_orange font-semibold text-xs", isComplete && "text-green-800")}>{isComplete ? "Completed" : "In progress"}</p>
+                <p className={cn("flex text-isky_orange font-semibold text-xs", isComplete && "text-green-800")}>
+                    {isComplete ? "Completed" : "In progress"}
+                </p>
             );
         }
     },
