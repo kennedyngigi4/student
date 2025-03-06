@@ -7,7 +7,8 @@ import { Button } from '@/components/ui/button';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-
+import { PayPalScriptProvider } from "@paypal/react-paypal-js"
+import PaypalButton from '../_components/paypal-buttons';
 
 type Params = Promise<{ courseId: string }>;
 const StudentCoursePurchase = (props: { params: Params }) => {
@@ -15,6 +16,9 @@ const StudentCoursePurchase = (props: { params: Params }) => {
   const resolvedParmas = use(props.params);
   const router = useRouter();
   const [ course, setCourse ] = useState({});
+  const [enrollementExists, setEnrollementExists ] = useState(false);
+  // paypals
+  const [ paid, setPaid ] = useState(false);
 
   useEffect(() => {
     axios.get(`${process.env.NEXT_PUBLIC_APIURL}/courses/course/${resolvedParmas.courseId}`)
@@ -27,37 +31,28 @@ const StudentCoursePurchase = (props: { params: Params }) => {
   }, [resolvedParmas.courseId]);
 
 
-  const handlePayments = async() => {
-    const transactionId = crypto.randomUUID();
-
-    const paymentData = {
-      transaction_id: transactionId,
-      amount: course?.price,
-      course_id: course?.course_id,
-      user_id: session?.user?.id,
-      payment_method: "Credit Card"
-    }
-
-
-    await axios.post(`${process.env.NEXT_PUBLIC_APIURL}/payments/student/payment`, paymentData, {
-      headers: {
-        'Authorization': `Token ${session?.accessToken}`
-      }
-    }).then((response) => {
-      console.log(response.data)
-      if(response.data === 201){
-        toast.success("Purchase successful!");
-        router.push("/student/dashboard")
-      } if (response.data === 409) {
-        toast.error("You have enrolled to this course already.")
-      } else {
+  useEffect(() => {
+    axios.get(`${process.env.NEXT_PUBLIC_APIURL}/payments/student/student_course_check/${resolvedParmas.courseId}/${session?.user?.id}`)
+      .then((response) => {
+        if(response.data.status_code === 409){
+          // already purchased
+          setEnrollementExists(true);
+        } else if(response.data.status_code === 200){
+          // doesnt exists
+          setEnrollementExists(false);
+        }
+      }).catch(() => {
         toast.error("Something went wrong");
-      }
-      
-    }).catch((error) => {
-      toast.error("Something went wrong");
-    })
+      });
 
+  }, [resolvedParmas.courseId]);
+
+
+  // PaypalPayment success
+  const handlePaymentSuccess = (order) => {
+    toast.success("Purchase successful!");
+    router.push("/student/dashboard")
+    setPaid(true);
 
   }
 
@@ -73,9 +68,26 @@ const StudentCoursePurchase = (props: { params: Params }) => {
         <h1 className="font-semibold text-xl">{course?.title}</h1>
         <p className="line-3">{course?.description}</p>
         
-        <div className="w-[50%] mx-auto py-8">
-          <Button className="w-full bg-green-500 font-semibold" onClick={handlePayments}>Enroll now</Button>
-        </div>
+        
+        {!enrollementExists && (
+          <>
+            <h1 className="text-isky_orange text-2xl pt-10 font-semibold">Enroll Now</h1>
+            <PayPalScriptProvider options={{
+              "clientId": `${process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID}`,
+              
+            }}>
+              <div className="pt-4">
+                {paid ? <h3 className="text-green-500">Payment Successful!</h3> : <PaypalButton amount={course?.price} courseId={course?.course_id} onSuccess={handlePaymentSuccess}  /> }
+              </div>
+            </PayPalScriptProvider>
+          </>
+        )}
+
+
+        {enrollementExists && (
+          <div className="text-green-500 text-xl font-bubblegum py-6">You have enrolled to this course!</div>
+        )}
+
         
       </div>
     </section>

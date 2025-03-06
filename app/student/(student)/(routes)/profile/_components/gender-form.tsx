@@ -1,4 +1,6 @@
 "use client"
+
+import axios from 'axios';
 import React, { useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -8,7 +10,9 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import toast from 'react-hot-toast'
 import { Pencil } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/utils';
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select'
+import { useSession } from 'next-auth/react';
 
 interface GenderFormProps {
     initialData: {
@@ -23,9 +27,9 @@ const formSchema = z.object({
 })
 
 const GenderForm = ({
-    initialData
+    initialData, userId
 }: GenderFormProps) => {
-
+    const { data: session } = useSession();
     const [isEditing, setIsEditing  ] = useState(false);
 
     const toggleEdit = () => setIsEditing((current) => !current);
@@ -37,11 +41,20 @@ const GenderForm = ({
         }
     });
 
-    const onSubmit = (values: z.infer<typeof formSchema>) => {
-        try{
-            console.log(values);
-        } catch {
-            toast.error("Something went wrong",{ style: { background: "red", color: "#ffffff"}})
+    const { isValid, isSubmitting } = form.formState;
+
+    const onSubmit = async(values: z.infer<typeof formSchema>) => {
+        try {
+            await axios.patch(`${process.env.NEXT_PUBLIC_APIURL}/account/profile_update/${userId}`, values, {
+                headers: {
+                    "Authorization": `Token ${session?.accessToken}`
+                }
+            }).then((response) => {
+                console.log(response.data);
+            })
+        } catch (error) {
+            console.log(error)
+            toast.error("Something went wrong", { style: { background: "red", color: "#ffffff" } })
         }
     }
 
@@ -75,17 +88,22 @@ const GenderForm = ({
                         render={({field}) => (
                             <FormItem>
                                 <FormControl>
-                                    <Input 
-                                        type="email"
-                                        placeholder="e.g. johndoe@email.com"
-                                        className="bg-white"
-                                        {...field}
-                                    />
+                                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                        <SelectTrigger className='w-full bg-white'>
+                                            <SelectValue placeholder="Gender" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectItem value="Female">Female</SelectItem>
+                                            <SelectItem value="Male">Male</SelectItem>
+                                            <SelectItem value="Not say">Not Say</SelectItem>
+                                        </SelectContent>
+                                    </Select>
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
                         )}
                     />
+                    <Button type="submit" size="sm" disabled={!isValid || isSubmitting}>Save</Button>
                 </form>
             </Form>
         )}

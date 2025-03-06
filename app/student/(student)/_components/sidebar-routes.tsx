@@ -30,6 +30,11 @@ const guestRoutes = [
         label: "Awards",
         href: "/student/awards",
     },
+    {
+        icon: SquareCode,
+        label: "Play Area",
+        href: "/student/playarea",
+    },
     
 ]
 

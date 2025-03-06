@@ -1,4 +1,6 @@
 "use client"
+
+import axios from 'axios';
 import React, { useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -8,7 +10,8 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import toast from 'react-hot-toast'
 import { Pencil } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/utils';
+import { useSession } from 'next-auth/react';
 
 interface FullnameFormProps {
     initialData: {
@@ -23,9 +26,9 @@ const formSchema = z.object({
 })
 
 const FullnameForm = ({
-    initialData
+    initialData, userId
 }: FullnameFormProps) => {
-
+    const { data:session } = useSession();
     const [isEditing, setIsEditing  ] = useState(false);
 
     const toggleEdit = () => setIsEditing((current) => !current);
@@ -33,14 +36,22 @@ const FullnameForm = ({
     const form = useForm<z.infer <typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            fullname: "",
+            fullname: initialData.fullname || "",
         }
     });
 
-    const onSubmit = (values: z.infer<typeof formSchema>) => {
+    const { isValid, isSubmitting } = form.formState;
+
+    const onSubmit = async (values: z.infer<typeof formSchema>) => {
         try{
-            console.log(values);
-        } catch {
+            await axios.patch(`${process.env.NEXT_PUBLIC_APIURL}/account/profile/${userId}/`, values, {
+                headers: {
+                    "Authorization": `Token ${session?.accessToken}`
+                }
+            });
+            console.log(".... Data ")
+        } catch(error) {
+            console.log(error)
             toast.error("Something went wrong",{ style: { background: "red", color: "#ffffff"}})
         }
     }
@@ -86,6 +97,7 @@ const FullnameForm = ({
                             </FormItem>
                         )}
                     />
+                    <Button size="sm" disabled={!isValid || isSubmitting}>Save</Button>
                 </form>
             </Form>
         )}

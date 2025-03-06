@@ -9,6 +9,7 @@ import { Input } from '@/components/ui/input'
 import toast from 'react-hot-toast'
 import { Pencil } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import CustomPhoneInput from '@/components/ui/phoneinput'
 
 interface PhoneFormProps {
     initialData: {
@@ -33,15 +34,24 @@ const PhoneForm = ({
     const form = useForm<z.infer <typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            phone: "",
+            phone: initialData.phone || undefined,
         }
     });
 
-    const onSubmit = (values: z.infer<typeof formSchema>) => {
-        try{
-            console.log(values);
-        } catch {
-            toast.error("Something went wrong",{ style: { background: "red", color: "#ffffff"}})
+    const { isValid, isSubmitting } = form.formState;
+
+    const onSubmit = async (values: z.infer<typeof formSchema>) => {
+        try {
+            await axios.patch(`${process.env.NEXT_PUBLIC_APIURL}/account/profile_update/${userId}`, values, {
+                headers: {
+                    "Authorization": `Token ${session?.accessToken}`
+                }
+            }).then((response) => {
+                console.log(response.data);
+            })
+        } catch (error) {
+            console.log(error)
+            toast.error("Something went wrong", { style: { background: "red", color: "#ffffff" } })
         }
     }
 
@@ -75,10 +85,8 @@ const PhoneForm = ({
                         render={({field}) => (
                             <FormItem>
                                 <FormControl>
-                                    <Input 
-                                        type="tel"
-                                        placeholder=""
-                                        className="bg-white"
+                                    <CustomPhoneInput
+                                        value="" 
                                         {...field}
                                     />
                                 </FormControl>
@@ -86,6 +94,7 @@ const PhoneForm = ({
                             </FormItem>
                         )}
                     />
+                    <Button type="submit" size="sm" disabled={!isValid || isSubmitting}>Save</Button>
                 </form>
             </Form>
         )}

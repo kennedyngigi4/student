@@ -25,7 +25,7 @@ const formSchema = z.object({
         .min(1, { message: "Email is required" })
         .email({ message: "Invalid email address" }),
     phone: z.string({ required_error: "Phone number is required" })
-        .min(1, { message: "Phone number is required" }),
+        .min(13, { message: "Phone number is required" }),
     password: z.string({ required_error: "Password is required" })
         .min(1, { message: "Password must be more than 6 characters" })
         .max(32, { message: "Password must be less than 32 characters" })

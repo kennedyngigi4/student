@@ -98,7 +98,7 @@ const CourseIdPage = (props: { params: Params }) => {
 
                         <p className="text-white pt-4 line-clamp-6">{course.description}</p>
 
-                        <p className="flex items-center gap-x-3 text-white py-3"><Clock /> <strong>Last updated:</strong> {course.created_at}</p>
+                        <p className="flex items-center gap-x-3 text-white py-3"><Clock /> <strong>Last updated:</strong> {new Date(course.created_at).toLocaleDateString() }</p>
 
                     </div>
 
